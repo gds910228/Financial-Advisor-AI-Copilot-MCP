@@ -42,9 +42,10 @@ pip install -r requirements.txt
 {
   "mcpServers": {
     "mcp-advisor-copilot": {
-      "command": "python",
-      "args": ["D:/WorkProjects/AI/MCP/Financial-Advisor-AI-Copilot-MCP/main.py"],
-      "env": {}
+      "disabled": false,
+      "timeout": 60,
+      "type": "sse",
+      "url": "http://127.0.0.1:8000/sse"
     }
   }
 }
