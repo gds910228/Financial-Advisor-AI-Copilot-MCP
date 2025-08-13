@@ -32,11 +32,127 @@ uv sync
 pip install -r requirements.txt
 ```
 
+### MCP配置
+
+#### 在Claude Desktop中配置
+
+在Claude Desktop的配置文件中添加以下配置：
+
+```json
+{
+  "mcpServers": {
+    "mcp-advisor-copilot": {
+      "command": "python",
+      "args": ["D:/WorkProjects/AI/MCP/Financial-Advisor-AI-Copilot-MCP/main.py"],
+      "env": {}
+    }
+  }
+}
+```
+
+#### 配置文件位置
+
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
 ### 启动MCP服务器
 
 ```bash
 python main.py
 ```
+
+### MCP使用示例
+
+#### 基本工作流程
+
+```python
+# 1. 创建客户档案
+create_client_profile({
+    "name": "李明",
+    "age": 30,
+    "risk_tolerance": "moderate",
+    "investment_horizon": 5,
+    "capital": 100000,
+    "esg_preference": true,
+    "sector_preferences": ["technology", "healthcare"]
+})
+
+# 2. 获取市场数据
+get_market_data({
+    "symbols": ["AAPL", "MSFT", "GOOGL", "JNJ"],
+    "period": "1y"
+})
+
+# 3. 构建投资组合
+build_portfolio({
+    "client_name": "李明",
+    "asset_universe": ["AAPL", "MSFT", "GOOGL", "JNJ", "SPY"]
+})
+
+# 4. 回测分析
+backtest_portfolio({
+    "portfolio": {"AAPL": 0.3, "MSFT": 0.25, "GOOGL": 0.25, "JNJ": 0.2},
+    "start_date": "2023-01-01",
+    "end_date": "2024-01-01"
+})
+
+# 5. 生成投资报告
+generate_investment_report({
+    "client_name": "李明",
+    "portfolio": {"AAPL": 0.3, "MSFT": 0.25, "GOOGL": 0.25, "JNJ": 0.2}
+})
+```
+
+#### 在Claude Desktop中使用
+
+配置完成后，重启Claude Desktop，然后可以直接使用自然语言与MCP服务交互：
+
+```
+请为一位30岁的投资者创建档案，风险偏好中等，投资期限5年，资金10万元
+```
+
+```
+帮我获取苹果、微软、谷歌的最新市场数据
+```
+
+```
+基于李明的档案构建一个平衡的投资组合
+```
+# 🏦 Financial Advisor AI Copilot MCP Service
+
+一个基于MCP协议的智能投资顾问服务，为金融分析师提供AI驱动的投资策略协助。
+
+## 🎯 项目概述
+
+本项目是为蓝耘科技MCP挑战赛开发的**领域型服务**，专门针对金融投资领域的专业需求，提供智能化的投资组合管理和风险分析功能。
+
+### 核心特性
+
+- 🤖 **自然语言交互** - 支持中文投资咨询对话
+- 👤 **客户档案管理** - 风险偏好和投资目标分析
+- 📊 **智能资产配置** - 基于现代投资组合理论(MPT)的优化算法
+- 📈 **多数据源集成** - yfinance、Alpha Vantage、Finnhub等
+- 🔍 **回测分析** - 历史数据回测和性能指标计算
+- 📄 **投资报告生成** - 专业的PDF投资建议报告
+
+## 🚀 快速开始
+
+### 环境要求
+
+- Python 3.10+
+- Windows/macOS/Linux
+
+### 安装依赖
+
+```bash
+# 使用 uv (推荐)
+uv sync
+
+# 或使用 pip
+pip install -r requirements.txt
+```
+
 
 ### 运行测试
 

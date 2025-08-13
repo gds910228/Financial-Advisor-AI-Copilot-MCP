@@ -305,4 +305,4 @@ Please consult with a qualified financial advisor before making investment decis
 
 if __name__ == "__main__":
     # Start the MCP server
-    mcp.run()
+    mcp.run(transport="sse")
